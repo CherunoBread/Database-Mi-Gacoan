@@ -507,7 +507,22 @@ WITH CASCADED CHECK OPTION;
 --
 DROP TABLE IF EXISTS `inside_view_local_karyawan`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `inside_view_local_karyawan`  AS SELECT `base_view_karyawan`.`karyawan_id` AS `karyawan_id`, `base_view_karyawan`.`nama_karyawan` AS `nama_karyawan`, `base_view_karyawan`.`pesanan_id` AS `pesanan_id`, `base_view_karyawan`.`tugas` AS `tugas` FROM `base_view_karyawan` WHERE `base_view_karyawan`.`pesanan_id` is not nullWITH LOCALCHECK OPTION  ;
+CREATE ALGORITHM=UNDEFINED 
+DEFINER=`root`@`localhost` 
+SQL SECURITY DEFINER 
+VIEW `inside_view_local_karyawan`  
+AS 
+SELECT 
+    `base_view_karyawan`.`karyawan_id` AS `karyawan_id`, 
+    `base_view_karyawan`.`nama_karyawan` AS `nama_karyawan`, 
+    `base_view_karyawan`.`pesanan_id` AS `pesanan_id`, 
+    `base_view_karyawan`.`tugas` AS `tugas` 
+FROM 
+    `base_view_karyawan` 
+WHERE 
+    `base_view_karyawan`.`pesanan_id` IS NOT NULL
+WITH LOCAL CHECK OPTION;
+
 
 -- --------------------------------------------------------
 
